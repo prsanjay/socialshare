@@ -1,3 +1,47 @@
-<h1>Sharing Is Caring</h1>
+<h3>Sharing is Caring</h3>
 
-<%= link_to "Share on Facebook", share_link_path, method: :post %>
+<p><%= flash[:notice] %></p>
+
+<div id="user-widget">
+  <% if current_user %>
+    Thank You <strong><%= current_user.name %></strong>! |
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  <% else %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+  <% end %>
+</div>
+<br>
+<% if current_user.present? && current_user.uid == "authorize_person_uid" %>
+
+  <div class="row">
+    <div class="span 6 offset 3">
+      <%= form_tag share_link_path,method: :post do %>
+
+        <%= label_tag "URL" %>
+        <%= text_field_tag :url, params[:url] %>
+        <%= submit_tag "Share on Facebook", class: "btn btn-xs btn-primary" %>
+
+      <% end %>
+    </div>
+  </div>
+
+  <h3>Users List</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Token Expire Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each_with_index do |user,index| %>
+        <tr>
+          <th scope="row"><%= index+=1 %></th>
+          <td><%= user.name %></td>
+          <td><%= user.oauth_expires_at.strftime('%d/%m/%Y') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
