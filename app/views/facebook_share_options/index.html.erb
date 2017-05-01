@@ -11,7 +11,7 @@
   <% end %>
 </div>
 <br>
-<% if current_user.present? && current_user.uid == '1533769539980196' %>
+<% if current_user.present? && current_user.uid == ENV['FB_UID'] %>
 
   <div class="row">
     <div class="span 6 offset 3">
