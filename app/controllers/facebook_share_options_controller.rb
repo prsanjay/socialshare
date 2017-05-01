@@ -9,7 +9,7 @@ class FacebookShareOptionsController < ApplicationController
 
     begin
       User.all.each do |user|
-        graph = Koala::Facebook::API.new(user.oauth_token)
+        graph = Koala::Facebook::API.new(user.long_term_token)
 
         response = graph.put_wall_post("", {link: "#{url}"})
       end

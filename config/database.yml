@@ -3,7 +3,7 @@ development:
   encoding: unicode
   database: socialshare_development
   pool: 5
-  username:
+  username: sanjay
   password:
 
 test:

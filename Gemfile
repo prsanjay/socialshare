@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+ruby "2.3.1"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use SCSS for stylesheets
@@ -26,6 +26,8 @@ gem "httparty"
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'pg', '~> 0.18.4'
+gem 'puma'
+gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
