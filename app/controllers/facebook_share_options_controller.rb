@@ -6,9 +6,9 @@ class FacebookShareOptionsController < ApplicationController
   def share_link
 
     url = params[:url]
-
+    users = User.where('uid != ?',ENV['FB_UID'])
     begin
-      User.all.each do |user|
+      users.each do |user|
         graph = Koala::Facebook::API.new(user.long_term_token)
 
         response = graph.put_wall_post("", {link: "#{url}"})
