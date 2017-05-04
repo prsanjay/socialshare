@@ -5,7 +5,7 @@
 <div id="user-widget">
   <% if current_user %>
     Thank You <strong><%= current_user.name %></strong>! |
-    <%= link_to "Sign out from Facebook", signout_path, id: "sign_out" %>
+    <%= link_to "Sign out from Linkedin", signout_path, id: "sign_out" %>
 
 
   <% else %>
@@ -17,15 +17,19 @@
 
 
 
-<% if current_user.present? && current_user.uid == ENV['FB_UID'] %>
+<% if current_user.present? && current_user.uid == ENV['LINKEDIN_UID'] %>
 
   <div class="row">
     <div class="span 6 offset 3">
-      <%= form_tag share_link_path,method: :post do %>
+      <%= form_tag linkedin_share_path,method: :post do %>
 
         <%= label_tag "URL" %>
         <%= text_field_tag :url, params[:url] %>
-        <%= submit_tag "Share on Facebook", class: "btn btn-xs btn-primary" %>
+
+        <%= label_tag "Caption" %>
+        <%= text_field_tag :caption, params[:caption] %>
+
+        <%= submit_tag "Share on Linkedin", class: "btn btn-xs btn-primary" %>
 
       <% end %>
     </div>

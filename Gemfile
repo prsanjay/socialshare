@@ -23,11 +23,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "koala"
 gem "httparty"
+gem 'omniauth-oauth2', '1.3.1'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-linkedin-oauth2'
 gem 'pg', '~> 0.18.4'
 gem 'puma'
 gem 'rails_12factor', group: :production
+
+gem "figaro"
+
+#gem 'linkedin'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

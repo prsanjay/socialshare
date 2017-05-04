@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  root 'facebook_share_options#index'
+  root 'home#index'
+
   post 'share_link' => 'facebook_share_options#share_link'
+  get 'facebook_page' => 'facebook_share_options#index'
+
+  post 'linkedin_share' => 'linkedin_shares#share_link'
+  get 'linked_page' => 'linkedin_shares#index'
+
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]

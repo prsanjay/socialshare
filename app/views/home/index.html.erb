@@ -1,0 +1,15 @@
+<h3>Sharing is Caring</h3>
+
+<p><%= flash[:notice] %></p>
+
+<div id="user-widget">
+  <% if current_user %>
+    Thank You <strong><%= current_user.name %></strong>! |
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+
+
+  <% else %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %> |
+    <%= link_to 'Sign in with Linkedin', '/auth/linkedin' %>
+  <% end %>
+</div>

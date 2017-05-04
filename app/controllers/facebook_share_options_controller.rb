@@ -1,12 +1,13 @@
 class FacebookShareOptionsController < ApplicationController
   def index
-    @users = User.all
+    @users = User.where('provider=?','facebook')
   end
+
 
   def share_link
 
     url = params[:url]
-    users = User.where('uid != ?',ENV['FB_UID'])
+    users = User.where('uid != ? and provider=?',ENV['FB_UID'],'facebook')
     begin
       users.each do |user|
         graph = Koala::Facebook::API.new(user.long_term_token)
@@ -17,7 +18,7 @@ class FacebookShareOptionsController < ApplicationController
     rescue Exception => e
       flash[:notice] = "Something Went Wrong. Here it is: #{e}"
     end
-    redirect_to '/'
+    redirect_to facebook_page_path
   end
 end
 
