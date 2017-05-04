@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
         user.oauth_expires_at = Time.current + (long_term_token['expires_in'].to_i.seconds)
       elsif auth.provider == 'linkedin'
         user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      elsif auth.provider == 'twitter'
+        user.twitter_secret_token = auth.credentials.secret
+        user.oauth_expires_at = nil
       end
       user.save!
     end

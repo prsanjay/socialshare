@@ -7,6 +7,8 @@ class HomeController < ApplicationController
         redirect_to linked_page_path
       when 'facebook'
         redirect_to facebook_page_path
+      when 'twitter'
+        redirect_to twitter_page_path
       else
         redirect_to root_url
       end

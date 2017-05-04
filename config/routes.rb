@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'home#index'
 
   post 'share_link' => 'facebook_share_options#share_link'
@@ -6,6 +7,9 @@ Rails.application.routes.draw do
 
   post 'linkedin_share' => 'linkedin_shares#share_link'
   get 'linked_page' => 'linkedin_shares#index'
+
+  post 'twitter_share' => 'twitter_shares#share_link'
+  get 'twitter_page' => 'twitter_shares#index'
 
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]

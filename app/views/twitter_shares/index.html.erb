@@ -5,12 +5,12 @@
 <div id="user-widget">
   <% if current_user %>
     Thank You <strong><%= current_user.name %></strong>! |
-    <%= link_to "Sign out from Linkedin", signout_path, id: "sign_out" %>
+    <%= link_to "Sign out from Twitter", signout_path, id: "sign_out" %>
 
 
   <% else %>
     <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %> |
-    <%= link_to 'Sign in with Linkedin', '/auth/linkedin' %>
+    <%= link_to 'Sign in with Linkedin', '/auth/linkedin' %> |
     <%= link_to 'Sign in with Twitter', '/auth/twitter' %>
   <% end %>
 </div>
@@ -18,11 +18,11 @@
 
 
 
-<% if current_user.present? && current_user.uid == ENV['LINKEDIN_UID'] %>
+<% if current_user.present? && current_user.uid == ENV['TWITTER_UID'] %>
 
   <div class="row">
     <div class="span 6 offset 3">
-      <%= form_tag linkedin_share_path,method: :post do %>
+      <%= form_tag twitter_share_path,method: :post do %>
 
         <%= label_tag "URL" %>
         <%= text_field_tag :url, params[:url] %>
@@ -30,7 +30,7 @@
         <%= label_tag "Caption" %>
         <%= text_field_tag :caption, params[:caption] %>
 
-        <%= submit_tag "Share on Linkedin", class: "btn btn-xs btn-primary" %>
+        <%= submit_tag "Share on Twitter", class: "btn btn-xs btn-primary" %>
 
       <% end %>
     </div>
@@ -50,7 +50,7 @@
         <tr>
           <th scope="row"><%= index+=1 %></th>
           <td><%= user.name %></td>
-          <td><%= user.oauth_expires_at.strftime('%d/%m/%Y') %></td>
+          <td><%= user.oauth_expires_at.strftime('%d/%m/%Y') rescue 'N/A'%></td>
         </tr>
       <% end %>
     </tbody>
