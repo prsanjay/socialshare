@@ -1,0 +1,25 @@
+development:
+  FB_APP_ID: ''
+  FB_APP_SECRET: ''
+  FB_UID: ''
+
+  LINK_CLIENT_ID: ''
+  LINK_CLIENT_SECRET: ''
+  LINKEDIN_UID: ''
+
+  TWITTER_APP_KEY: ''
+  TWITTER_APP_SECRET: ''
+  TWITTER_UID: ''
+
+production:
+  LINK_CLIENT_ID: ''
+  LINK_CLIENT_SECRET: ''
+  LINKEDIN_UID: ''
+
+  FB_APP_ID: ''
+  FB_APP_SECRET: ''
+  FB_UID: ''
+
+  TWITTER_APP_KEY: ''
+  TWITTER_APP_SECRET: ''
+  TWITTER_UID: ''
